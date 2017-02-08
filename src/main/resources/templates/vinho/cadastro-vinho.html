@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt"
+			xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 	<title>AlgaWorks</title>
-
-	<link rel="stylesheet" type="text/css" href="layout/stylesheets/vendors.min.css"/>
-	<link rel="stylesheet" type="text/css" href="layout/stylesheets/algaworks.min.css"/>
-	<link rel="stylesheet" type="text/css" href="layout/stylesheets/application.css"/>
+	<!-- os recursos da aplicação é o thymeleaf que 'controla' -->
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}"/>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,7 +36,7 @@
 
 	    <div class="navbar-header">
 	      <a class="navbar-brand  hidden-xs" href="#">
-	        <img alt="AlgaWorks" src="layout/images/logo.png"/>
+	        <img alt="AlgaWorks" th:src="@{/layout/images/logo.png}"/>
 	      </a>
 
 	      <ul class="nav  navbar-nav">
@@ -136,8 +139,8 @@
 
 </div>
 
-<script src="layout/javascripts/vendors.min.js"></script>
-<script src="layout/javascripts/algaworks.min.js"></script>
+<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+<script src="@{/layout/javascripts/algaworks.min.js}"></script>
 
 </body>
 </html>
