@@ -100,13 +100,16 @@
 	<form method="POST" class="form-vertical  js-form-loading" th:object='${vinho} '>
 	<!-- Se houver algum erro no objeto ${vinho}, renderiza a DIV abaixo (${#fields....}) -->
 		<div class="alert  alert-danger  alert-dismissible" role="alert" th:if='${#fields.hasAnyErrors()}'>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<th:block th:each='error : ${#fields.detailedErrors()}'>
-			<div>
-				<i class="fa  fa-exclamation-circle"></i> 
-				<span th:text='${error.message}'></span>
-			</div>
-		</th:block>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<th:block th:each='error : ${#fields.detailedErrors()}'>
+				<div>
+					<i class="fa  fa-exclamation-circle"></i> 
+					<span th:text='${error.message}'></span>
+				</div>
+			</th:block>
+		</div> 
+		<div class="alert  alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+				<span th:text='${messagem}'></span>
 		</div> 
 		<div class="form-group">
 			<label for="nome">Nome</label>
@@ -145,7 +148,7 @@
 	
 	<footer class="aw-layout-footer  js-content">
 		<div class="container-fluid">
-			<span class="aw-footer-disclaimer">&copy; 2016 AlgaWorks. Todos os direitos reservados.</span>
+			<span class="aw-footer-disclaimer">&copy; 2017 AlgaWorks. Todos os direitos reservados.</span>
 		</div>
 	</footer>
 
