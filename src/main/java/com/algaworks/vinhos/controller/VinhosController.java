@@ -1,5 +1,7 @@
 package com.algaworks.vinhos.controller;
 
+import java.math.BigDecimal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +31,14 @@ public class VinhosController {
 	//@Valid -> se houver error, atribue o valor ao result e valida depois(se deu erro ou não)
 	@PostMapping("/vinhos/novo")
 	public ModelAndView salvar(@Valid Vinho vinho, BindingResult result,RedirectAttributes attributes) {
-		if(result.hasErrors()) {
+		if(vinho.getValor() == null) {
+			vinho.setValor(new BigDecimal(4.9));
+		} else if(result.hasErrors()) {
 			return novo(vinho);//os valores do form persistem
 		}
 		vinhos.save(vinho);
 		//permite enviar algum atributo no redirect na página, normalmente de sucesso
-		attributes.addFlashAttribute("mensagem", "Vinho salvo com sucesso");
+		attributes.addFlashAttribute("mensagem", "Vinho salvo com sucesso!");
 		return new ModelAndView("redirect:/vinhos/novo");
 	}
 }
