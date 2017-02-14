@@ -62,7 +62,8 @@
 				<tr th:each="vinho : ${vinhos}">
 					<td th:text = "${vinho.codigo}" class="text-center">1</td>
 					<td>
-						<a href="#" th:text = "${vinho.nome}">
+						<a th:href="@{/vinhos/{codigo}(codigo=${vinho.codigo})}" 
+						th:text = "${vinho.nome}">
 							Andale
 						</a>
 					</td>
