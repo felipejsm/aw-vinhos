@@ -22,7 +22,8 @@
  	
 	<!-- th:object='${vinho} ' objeto criado pelo controler-->
 	<!-- '$' sinal que referência objetos enviados pelo controlador -->
-	<form method="POST" class="form-vertical  js-form-loading" th:object='${vinho}'>
+	<form method="POST" class="form-vertical  js-form-loading" th:object='${vinho}' 
+	th:action="@{/vinhos/novo}">
 	<!-- Se houver algum erro no objeto ${vinho}, renderiza a DIV abaixo (${#fields....}) -->
 		<div class="alert  alert-danger  alert-dismissible" role="alert" th:if='${#fields.hasAnyErrors()}'>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
