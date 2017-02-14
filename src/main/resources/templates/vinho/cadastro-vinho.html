@@ -41,6 +41,8 @@
 			<label for="nome">Nome</label>
 			<input id="nome" type="text" class="form-control" th:field="*{nome}"/>
 		</div>
+		<!-- Dessa forma, se houver codigo ele faz update, caso contrario, salva -->
+		<input type="hidden" th:field="@{codigo}"/>
 
 		<div class="row">
 			<div class="col-sm-6">
