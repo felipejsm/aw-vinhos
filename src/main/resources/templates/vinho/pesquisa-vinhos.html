@@ -3,6 +3,7 @@
 			xmlns="http://www.w3.org/1999/xhtml"
 			xmlns:th="http://www.thymeleaf.org"
 			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+			xmlns:data="http://www.thymeleaf.org/extras/data-attribute"
 			layout:decorate="~{layout/layout-padrao}">
 <head>
 	<link rel="stylesheet" type="text/css" href="@{/stylesheets/pesquisa-vinhos.css}"/>
@@ -75,7 +76,8 @@
 						55,00
 					</td>
 					<td class="text-center">
-						<i class="fa fa-trash"  style="cursor: pointer;"></i>
+						<i class="fa fa-trash"  style="cursor: pointer;" data-toggle="modal" data-target="confirmaExclusaoModal" 
+						data:nome="${vinho.nome}"></i>
 					</td>
 				</tr>
 				<tr th:if="${vinhos.empty}">
@@ -113,9 +115,21 @@
 
 </section>
 	
-	
+<th:block layout:fragment="javascript-extra">
+	<script type="text/javascript">
+		$('#confirmaExclusaoModal').on("show.bs.modal", function (event){
+			var button = $(event.relatedTarget);
+			var nome = button.data('nome');
+
+			var modal = $(this);
+			modal.find('.modal-body span').html('Tem certexa que deseja excluir o <strong>'+
+				nome+'</strong>?');
+		});
+	</script>
+
+</th:block>
 
 </div>
 
 </body>
-</html>
+</html> 
