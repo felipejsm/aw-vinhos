@@ -13,7 +13,7 @@
 
 <div class="aw-layout-page">
 
-	<section th:fragment="~{conteudo}">
+	<section layout:fragment="conteudo">
 
 
 <div class="page-header">
@@ -91,7 +91,7 @@
 	<div class="modal fade" id="confirmaExclusaoModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form th:action="@{/vinhos"} method="POST">
+				<form th:action="@{/vinhos}" method="POST">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true"&times;</span>
