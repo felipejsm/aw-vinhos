@@ -25,6 +25,9 @@
 </div>
 
 <div class="container-fluid">
+	<div class="alert  alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+		<span th:text='${mensagem}'></span>
+	</div>
 	<form method="GET" class="form-vertical  js-form-loading" th:object = "${vinhoFilter}">
 		<div class="form-group">
 			<div class="input-group">
@@ -92,6 +95,8 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<form th:action="@{/vinhos}" method="POST">
+					<!-- input abaixo é a forma de realizar um delete com o SPRING-->
+					<input type="hidden" name="_method" value="DELETE"/>
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true"&times;</span>
