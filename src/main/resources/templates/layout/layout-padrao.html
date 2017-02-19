@@ -96,13 +96,7 @@
 <script th:src="@{/layout/javascripts/vendors.min.js}"></script>
 <script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
 <script th:src="@{/javascripts/vendors/jquery.masknumber.min.js}"></script>
-<script type="text/javascript">
-	$('.js-moeda').maskNumber({
-		decimal: ',',
-		thousands: '.'
-	});
-
-</script>
+<script th:src="@{/javascripts/configurar-moeda.js}"></script>
 <th:block layout:fragment="javascript-extra"></th:block>
 </body>
 </html>
