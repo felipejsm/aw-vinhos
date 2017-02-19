@@ -2,7 +2,8 @@
 <html lang="pt"
 			xmlns="http://www.w3.org/1999/xhtml"
 			xmlns:th="http://www.thymeleaf.org"
-			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+			xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<meta charset="UTF-8"/>
@@ -49,14 +50,11 @@
 
 	    <ul class="nav navbar-nav  navbar-right">
 	    
-	      <li class="dropdown">
-	        <ul class="dropdown-menu">
-	          <li><a href="javascript:;">Item 1</a></li>
-	          <li><a href="javascript:;">Item 2</a></li>
-	        </ul>
+	      <li>
+	        <p class='navbar-text' th:text="${#authentication.name}"></p>
 	      </li>
 	      <li>
-	        <a href="#"><em class="fa  fa-sign-out"></em></a>
+	        <a th:href="@{/logout}"><em class="fa  fa-sign-out"></em></a>
 	      </li> 
 	    </ul>
 
@@ -69,12 +67,13 @@
 		    <nav class="aw-menu  js-menu">
 		      <ul class="aw-menu__list">
 
-		        <li class="aw-menu__item is-active">
-		          <a href="dashboard.html"><i class="fa  fa-fw  fa-home"></i><span>Cadastro vinho</span></a>
+		        <li class="aw-menu__item" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
+		          <a th:href="@{/vinhos/novo}"><i class="fa  fa-fw  fa-home"></i>
+		          <span>Cadastro vinho</span></a>
 		        </li>
 		        
-		         <li class="aw-menu__item">
-		          <a href="dashboard.html"><i class="fa  fa-fw  fa-home"></i><span>Pesquisar vinho</span></a>
+		         <li class="aw-menu__item" sec:authorize="hasRole('ROLE_PESQUISAR_VINHO')">
+		          <a th:href="@{/vinhos}"><i class="fa  fa-fw  fa-home"></i><span>Pesquisar vinho</span></a>
 		        </li>
 		      </ul>
 		    </nav>
