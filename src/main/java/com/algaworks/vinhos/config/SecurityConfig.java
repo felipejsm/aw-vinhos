@@ -15,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 		auth.inMemoryAuthentication().withUser("joao").password("joao")
 		.roles("PESQUISAR_VINHO").and()
-		.withUser("maria").password("maria").roles("CADASTRAR_VINHO","PESQUISA_VINHO");
+		.withUser("maria").password("maria").roles("CADASTRAR_VINHO","PESQUISAR_VINHO");
 	}
 	
 	@Override
@@ -26,15 +26,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/vinhos")
-					.hasRole("PESQUISAR_VINHO")
-					.antMatchers("/vinhos/**").hasRole("CADASTRAR_VINHO")
+				.antMatchers("/vinhos").hasRole("PESQUISAR_VINHO")
+				.antMatchers("/vinhos/**").hasRole("CADASTRAR_VINHO")
 					.anyRequest().authenticated()
 					.and()
-					.formLogin().loginPage("/login")
+				.formLogin()
+					.loginPage("/login")
 					.permitAll()
 					.and()
-					.logout()
-						.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+				.logout()
+					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 }
