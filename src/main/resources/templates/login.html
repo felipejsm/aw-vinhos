@@ -4,7 +4,7 @@
 			xmlns:th="http://www.thymeleaf.org"
 			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 			layout:decorate="~{layout/layout-simples }">
-<th:block layout:fragment="conteudo"></th:block>
+<th:block layout:fragment="conteudo">
 	<form th:action="@{/login}" method="POST">
 		<div class="aw-simple-panel">
 			<img alt="AlgaWorks" th:src="@{/layout/images/logo-gray.png}"/>
@@ -31,5 +31,5 @@
 		<div class="aw-simple-panel__footer">Novo por aqui? <a href="#">Cadastre-se</a>.</div>
 	</div>
 </form>
-
+</th:block>
 </html>
