@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 				.antMatchers("/vinhos")
 					.hasRole("PESQUISAR_VINHO")
-					.antMatchers("/vinhos/**").hasRole("CADASTRA_VINHO")
+					.antMatchers("/vinhos/**").hasRole("CADASTRAR_VINHO")
 					.anyRequest().authenticated()
 					.and()
 					.formLogin().loginPage("/login")
