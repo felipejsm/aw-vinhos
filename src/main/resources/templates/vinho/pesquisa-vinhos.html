@@ -3,6 +3,7 @@
 			xmlns="http://www.w3.org/1999/xhtml"
 			xmlns:th="http://www.thymeleaf.org"
 			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+			xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 			xmlns:data="http://www.thymeleaf.org/extras/data-attribute"
 			layout:decorate="~{layout/layout-padrao}">
 <head>
@@ -58,7 +59,8 @@
 					<th class='av-table-vinhos-col-valor'>
 						Valor
 					</th>
-					<th class='av-table-vinhos-col-icons'>
+					<th class='av-table-vinhos-col-icons' 
+					sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
 					</th>
 				</tr>
 			</thead>
@@ -67,9 +69,10 @@
 					<td th:text = "${vinho.codigo}" class="text-center">1</td>
 					<td>
 						<a th:href="@{/vinhos/{codigo}(codigo=${vinho.codigo})}" 
-						th:text = "${vinho.nome}">
-							Andale
-						</a>
+						th:text = "${vinho.nome}"
+						sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')"></a>
+						<span th:text="${vinho.nome}" 
+						sec:authorize="not hasRole('ROLE_CADASTRAR_VINHO')"></span>
 					</td>
 					<td th:text="#{|tipoVinho.${vinho.tipo}|}">
 						Tinto
@@ -78,7 +81,7 @@
 					<td th:text="|R$${{vinho.valor}}|" class='text-right'>
 						55,00
 					</td>
-					<td class="text-center">
+					<td class="text-center" sec:authorize="hasRole('ROLE_CADASTRAR_VINHO')">
 						<i class="fa fa-trash"  style="cursor: pointer" data-toggle="modal" data-target="#confirmaExclusaoModal" 
 						data:nome="${vinho.nome}" 
 						data:url-apagar="@{/vinhos/{codigo}(codigo=${vinho.codigo})}"></i>
